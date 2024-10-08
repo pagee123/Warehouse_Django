@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>刪除項目</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link rel="icon" href="{% static 'images/Box_ico.ico' %}" type="image/x-icon"/>
+    <style>
+        body {
+            background-image: 
+                radial-gradient(circle, rgba(255, 255, 255, 0.8) 30%, rgba(255, 255, 255, 0.6) 60%), /* 漸變背景 */
+                url("{% static 'images/box-out.png' %}"); /* 背景圖片 */
+            background-repeat: repeat; /* 不重複圖片 */
+            background-size: auto; /* 覆蓋整個背景 */
+            background-position: center;
+            height: 100vh; /* 充滿整個視口高度 */
+            display: flex; /* 使用 flexbox 進行佈局 */
+            justify-content: center; /* 垂直居中 */
+            align-items: center; /* 水平居中 */
+            padding: 20px; /* 內邊距 */
+        }
+        .confirmation-box {
+            background-color: rgba(255, 255, 255, 0.9); /* 半透明白色背景 */
+            padding: 30px; /* 內邊距 */
+            border-radius: 0.5rem; /* 圓角 */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* 陰影效果 */
+            text-align: center; /* 文字居中 */
+            max-width: 400px; /* 最大寬度 */
+            width: 100%; /* 寬度自適應 */
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #dc3545; /* 刪除確認標題顏色 */
+            font-size: 1.5rem; /* 標題字體大小 */
+            font-weight: bold; /* 標題字體加粗 */
+        }
+        .btn {
+            margin: 10px; /* 按鈕間距 */
+            border-radius: 5px; /* 圓角 */
+            width: 45%; /* 按鈕寬度 */
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation-box">
+        <h1>確定要刪除此「{{ product.product_name }}」品項?</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class='btn btn-danger'>是，確認刪除</button>
+            <a href="{% url 'product_list' %}" class='btn btn-secondary'>取消</a>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>錯誤 - 頁面不存在</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link rel="icon" href="{% static 'images/Box_ico.ico' %}" type="image/x-icon"/>
+    <style>
+        body {
+            background-image: 
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), /* 透明度漸變背景 */
+                url("{% static 'images/404_box.jpg' %}"); /* 錯誤頁面背景圖片 */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            text-align: center;
+        }
+        .error-container {
+            background-color: rgba(255, 255, 255, 0.95); /* 半透明背景 */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #dc3545; /* 錯誤標題紅色 */
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .btn-home {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            text-decoration: none;
+        }
+        .btn-home:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1>404</h1>
+        <p>很抱歉，您所訪問的頁面不存在。</p>
+        <a href="{% url 'home' %}" class="btn-home">回到首頁</a>
+    </div>
+</body>
+</html>
