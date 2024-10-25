@@ -37,16 +37,10 @@ urlpatterns = [
     path('products/add/', views.add_product, name='add_product'),  # 新增貨品的 URL
     path('products/delete/<int:product_id>/', views.delete_product, name='delete_product'),  # 刪除貨品的 URL
     path('signup/', views.signup, name='signup'),  # 註冊頁面
-    path('api/products/', ProductListAPIView.as_view(), name='product_list_api'),  # 所有貨品列表
-    path('api/products/<int:pk>/', ProductDetailAPIView.as_view(), name='product_detail_api'),  # 單一貨品
-    path('api/users/', UserListAPIView.as_view(), name='user_list_api'),  # 所有使用者
-    path('api/users/<int:pk>/', UserDetailAPIView.as_view(), name='user_detail_api'),  # 單一使用者
     path('api/login/', login_user, name='login_user'),
     path('api/user/profile/', get_user_profile, name='user-profile'),
     path('api/barcode/',views.barcode_search),
     path('products_detail/<int:id>/',views.products_detail),
-
-
     
     re_path(r'media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     re_path(r'.*',views.error_page),
